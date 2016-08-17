@@ -19,6 +19,15 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.0.28" level="application_server_libraries" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 8.0.28" level="application_server_libraries" />
+    <orderEntry type="library" exported="" name="lib" level="project" />
+    <orderEntry type="library" name="apache-log4j-1.2" level="project" />
+    <orderEntry type="library" name="log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="mysql:mysql-connector-java:5.1.34" level="project" />
+    <orderEntry type="library" name="com.sun.messaging.mq:fscontext:4.4.2" level="project" />
+    <orderEntry type="library" name="sun-jndi-providerutil" level="project" />
+    <orderEntry type="library" name="gf-client" level="project" />
+    <orderEntry type="library" name="org.glassfish.main.extras:appserv-rt-frag:4.0" level="project" />
+    <orderEntry type="library" name="javax:javaee-web-api:6.0" level="project" />
   </component>
 </module>
