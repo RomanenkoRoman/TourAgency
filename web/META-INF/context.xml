@@ -1,0 +1,11 @@
+<Context>
+    <Resource name="jdbc/mydbtest" auth="Container" type="javax.sql.DataSource"
+              username="root"
+              password="root"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost/mydbtest"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              autocommit="false"
+              maxActive="10"/>
+
+</Context>

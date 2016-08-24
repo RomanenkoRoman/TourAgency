@@ -33,6 +33,15 @@
         <servlet-name>Controller</servlet-name>
         <url-pattern>/controller</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>StatusController</servlet-name>
+        <servlet-class>ua.nure.romanenko.SummaryTask4.web.StatusController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StatusController</servlet-name>
+        <url-pattern>/statusController</url-pattern>
+    </servlet-mapping>
 
 
     <!--============================================================-->

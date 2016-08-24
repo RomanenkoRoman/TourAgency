@@ -20,10 +20,3 @@ public enum Role {
 
 }
 
-class Test {
-    public static void main(String[] args) {
-        System.out.println(Role.ADMIN.ordinal());
-        System.out.println(Role.MANAGER.ordinal());
-        System.out.println(Role.USER.ordinal());
-    }
-}

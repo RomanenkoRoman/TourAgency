@@ -1,0 +1,8 @@
+<component name="libraryTable">
+  <library name="org.glassfish.main.extras:appserv-rt-frag:4.0" type="repository">
+    <properties maven-id="org.glassfish.main.extras:appserv-rt-frag:4.0" />
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

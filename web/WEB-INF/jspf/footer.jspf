@@ -1,0 +1,9 @@
+<%--=========================================================================== 
+Footer (bottom area). 
+===========================================================================--%> 
+
+<tr>
+
+	<td id="footer">&copy;<i>Tour Agency (SummaryTask4, EPAM-KNURE Java Training, Romanenko Roman), 2016</i></td>
+
+</tr>
