@@ -113,15 +113,34 @@ CREATE TABLE catalog(
 );
 -- rest                      hot       id     name   price,cat,type,q
 INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Turkey', 2100, 0,  1,  2); -- 1 (order id)
-INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Egypt', 2150,  1,  2,  2);      -- 2
-INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Greece', 2500, 1,  1,  4);     -- 3
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Egypt', 2150,  0,  2,  2);      -- 2
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Greece', 2500, 0,  0,  4);
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Finland', 3125,0,  1,  2); -- 1 (order id)
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Portugal',3999,0,  2,  2);      -- 2
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Thailand', 2500,0,  0,  4);
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Serbia', 800, 0,  1,  2); -- 1 (order id)
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'UAE', 4500,  0,  0,  2);      -- 2
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Cyprus', 1700, 0,  3,  4);
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Israel', 600, 0,  3,  2); -- 1 (order id)
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Jordan', 3000,  0,  3,  2);      -- 2
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Andorra', 2650, 0,  1,  4);     -- 3
 -- excursion
-INSERT INTO catalog VALUES(true,DEFAULT, 'Miami', 700,   0,  2,  1);       -- 4
-INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'London', 500,  2,  2,  2);      -- 5
-INSERT INTO catalog VALUES(true,DEFAULT, 'Australia',1000,2, 3,  4);  -- 6
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Miami', 700,   1,  0,  1);       -- 4
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'London', 500,  1,  2,  2);      -- 5
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Australia',1000,1, 3,  4);
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Spain', 2450,   1,  0,  1);       -- 4
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Austria', 640,  1,  2,  2);      -- 5
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Czech Republic',1900,1, 3,  4);
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Montenegro', 2700, 1,  2,  1);       -- 4
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Gloria', 500,  1,  2,  2);      -- 5
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'China',1200,1, 3,  4);  -- 6
 -- shopping
-INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Italy', 700,   2,  3,  4);       -- 4
-INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'France', 500,  2,  3,  2);      -- 5
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Italy', 700,   2,  0,  4);       -- 4
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'France', 500,  2,  3,  2);
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'India', 950,   2,  0,  1);       -- 4
+INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Hungary', 500,  2,  3,  1);  -- 5
+
+
 
 
 
