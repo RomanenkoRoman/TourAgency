@@ -27,12 +27,14 @@ public class CommandContainer {
         commands.put("makeAnOrder",new MakeAnOrderCommand());
         commands.put("private_office", new PrivateOfficeCommand());
         commands.put("filterCatalog", new FilterCatalogCommand());
+        commands.put("confirmOrder", new ConfirmOrderCommand());
 
         // admin commands
         commands.put("listOrders", new ListOrdersCommand());
         commands.put("adminListOrders", new AdminListOrdersCommand());
         commands.put("doHotUnHot", new DoHotUnHotCommand());
         commands.put("adminListCatalog", new AdminListCatalogCommand());
+        commands.put("discount", new DiscountSettingsCommand());
 
         LOG.debug("Command container was successfully initialized");
         LOG.trace("Number of commands --> " + commands.size());

@@ -14,6 +14,7 @@ public class Path {
     public static final String PAGE_SETTINGS = "/WEB-INF/jsp/settings.jsp";
     public static final String PAGE_YOUR_ORDER = "/WEB-INF/jsp/client/yourOrder.jsp";
     public static final String PAGE_PRIVATE_OFFICE = "/WEB-INF/jsp/client/private_office.jsp";
+    public static final String PAGE_DISCOUNT_SETTINGS = "/WEB-INF/jsp/admin/discount.jsp";
 
 
 
@@ -22,5 +23,8 @@ public class Path {
     public static final String COMMAND_LIST_CATALOG = "/controller?command=listCatalog";
     public static final String COMMAND_YOUR_ORDER = "/controller?command=yourOrder";
     public static final String COMMAND_ADMIN_LIST_CATALOG = "/controller?command=adminListCatalog";
+    public static final String COMMAND_CONFIRM_ORDER = "/controller?command=confirmOrder";
+    public static final String COMMAND_PRIVATE_OFFICE = "/controller?command=private_office";
+    public static final String COMMAND_DISCOUNT = "/controller?command=discount";
 
 }

@@ -34,6 +34,7 @@ public final class Fields {
 	public static final String USER_ORDER_BEAN_USER_LAST_NAME = "last_name";	
 	public static final String USER_ORDER_BEAN_ORDER_BILL = "bill";	
 	public static final String USER_ORDER_BEAN_STATUS_NAME = "name";
+	public static final String USER_ORDER_BEAN_DISCOUNT = "discount";
 
 	//new bean
 	public static final String NEW_USER_FIRST_NAME = "First name";

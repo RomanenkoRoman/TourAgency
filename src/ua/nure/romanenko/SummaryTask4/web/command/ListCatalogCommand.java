@@ -35,14 +35,7 @@ public class ListCatalogCommand extends Command {
 		List<CatalogItem> catalogItems = DBManager.getInstance().findCatalogItems();
 		LOG.trace("Found in DB: CatalogItemsList --> " + catalogItems);
 		
-		// sort menu by category
-//		Collections.sort(catalogItems, new Comparator<CatalogItem>() {
-//			public int compare(CatalogItem o1, CatalogItem o2) {
-//				return
-//						(o1.getCategoryId() - o2.getCategoryId());
-//			}
-//		});
-		
+
 		// put menu items list to the request
 		session.setAttribute("catalogItems", catalogItems);
 		LOG.trace("Set the request attribute: catalogItems --> " + catalogItems);

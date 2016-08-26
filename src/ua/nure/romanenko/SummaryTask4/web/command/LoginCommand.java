@@ -52,7 +52,7 @@ public class LoginCommand extends Command {
 		String forward = Path.PAGE_ERROR_PAGE;
 
 		if (userRole == Role.ADMIN) {
-			forward = Path.COMMAND_LIST_ORDERS;
+			forward = Path.COMMAND_ADMIN_LIST_CATALOG;
 		}
 
 		if (userRole == Role.USER) {
@@ -60,7 +60,7 @@ public class LoginCommand extends Command {
 		}
 
 		if (userRole == Role.MANAGER) {
-			forward = Path.COMMAND_LIST_CATALOG;
+			forward = Path.COMMAND_ADMIN_LIST_CATALOG;
 			// TODO: 22.08.2016 сделать разные листы для манагера и юзера
 		}
 

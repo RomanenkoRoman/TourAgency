@@ -8,8 +8,10 @@ Header (top area).
 <html >
 <style type="text/css">
     body { margin: 0; }
-    #sidebar, #rightHeader { position: absolute; }
-    #sidebar, #rightHeader { overflow: auto; padding: 10px; }
+    #rightHeader { position: absolute; }
+    #rightHeader { overflow: auto; padding: 10px; }
+    #leftHeader { position: absolute; }
+    #leftHeader { overflow: auto; padding: 10px; }
     #header {
         height: 80px; /* Высота слоя */
 
@@ -20,10 +22,17 @@ Header (top area).
         width: 150px; background: #ECF5E4; border-right: 1px solid #231F20;
         top: 82px; /* Расстояние от верхнего края */
         bottom: 0; /* Расстояние снизу  */
+
     }
+
     #rightHeader {
-        top: 20px; /* Расстояние от верхнего края */
+        top: 10px; /* Расстояние от верхнего края */
         right: 0px; /* Расстояние от левого края */
+
+    }
+    #leftHeader {
+        top: 10px; /* Расстояние от верхнего края */
+        left: 0px; /* Расстояние от левого края */
 
     }
 </style>
@@ -46,8 +55,9 @@ Header (top area).
                     ===========================================================================--%>
 
                     <c:when test="${userRole.name == 'admin' }">
-                        <a href="controller?command=adminListOrders">All orders</a> &nbsp;
                         <a href="controller?command=adminListCatalog">Admin Catalog</a> &nbsp;
+                        <a href="controller?command=adminListOrders">All orders</a> &nbsp;
+                        <a href="controller?command=discount">Discount Settings</a> &nbsp;
 
                     </c:when>
 
@@ -57,16 +67,14 @@ Header (top area).
                     ===========================================================================--%>
                     <c:when test="${userRole.name == 'user'}">
                         <a href="controller?command=listCatalog">Catalog</a> &nbsp;
-
-                        <a href="controller?command=private_office">
-                            Private Office
-                        </a>&nbsp;
+                        <a href="controller?command=private_office">Private Office</a>&nbsp;
 
                     </c:when>
 
                     <c:when test="${userRole.name == 'manager' }">
-                        <a href="controller?command=adminListOrders">Catalog</a> &nbsp;
+                        <a href="controller?command=adminListCatalog">Admin Catalog</a> &nbsp;
                         <a href="controller?command=adminListOrders">All orders</a> &nbsp;
+                        <a href="controller?command=discount">Discount Settings</a> &nbsp;
                     </c:when>
                 </c:choose>
 
@@ -116,7 +124,7 @@ Header (top area).
                 <a href="login.jsp">Login</a>
             </div>
         </c:if>
-            </center>
+
 
     </td>
 </tr>

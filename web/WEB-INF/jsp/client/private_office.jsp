@@ -16,7 +16,7 @@
 <%@ include file="/WEB-INF/jspf/head.jspf" %>
 
 <body>
-
+<center>
 <table id="main-container">
     <%@ include file="/WEB-INF/jspf/header.jspf" %>
 
@@ -27,8 +27,7 @@
             <form id="private_office" action="controller" method="get">
                 <input type="hidden" name="command" value="private_office"/>
         <td>
-            Hello,${user.firstName} ${user.lastName}. This is your private office;<br>
-            Your orders is :
+
             <br>
         </td>
         <c:choose>
@@ -39,25 +38,51 @@
                     <tr>
                         <td>№</td>
                         <td>Name</td>
-                        <td>Category</td>
                         <td>Price</td>
-                            <%--<td>People</td>--%>
+                        <td>Category</td>
+                        <td>Hotel Type</td>
+                        <td>People</td>
                         <td>Status</td>
+                        <td>Discount</td>
                     </tr>
                     </thead>
 
                     <c:set var="bill" value="0"/>
                     <c:set var="k" value="0"/>
-
+                    Hello,${user.firstName} ${user.lastName}. This is your private office;<br>
+                    Your orders is :
+                    <br>
+                    <br>
                     <c:forEach var="item" items="${orders}">
                         <c:set var="k" value="${k+1}"/>
 
                         <tr>
                             <td><c:out value="${k}"/></td>
                             <td>${item.hotelName}</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${item.discount>0}">
+                                        ${item.hotelPrice - (item.hotelPrice / 100 * item.discount)}
+
+                                    </c:when>
+                                    <c:when test="${item.discount == 0}">
+                                        ${item.hotelPrice}
+                                    </c:when>
+                                </c:choose>
+                            </td>
                             <td>${item.categoryName}</td>
-                            <td>${item.hotelPrice}</td>
+                            <td>${item.hotelType}</td>
+                            <td>${item.people}</td>
                             <td>${item.status}</td>
+
+                            <td>
+                                <c:choose>
+                                    <c:when test="${item.discount>0}">
+                                        ${item.discount}%
+                                    </c:when>
+                                </c:choose>
+
+                            </td>
 
 
                         </tr>
@@ -72,8 +97,9 @@
         </td>
     </tr>
 </table>
-
+</center>
 
 <%@ include file="/WEB-INF/jspf/footer.jspf" %>
 </body>
+
 </html>

@@ -14,6 +14,7 @@
 <%@ include file="/WEB-INF/jspf/head.jspf" %>
 
 <body>
+<center>
 <table id="main-container">
 
     <%@ include file="/WEB-INF/jspf/header.jspf" %>
@@ -53,5 +54,6 @@
     <%@ include file="/WEB-INF/jspf/footer.jspf" %>
 
 </table>
+</center>
 </body>
 </html>

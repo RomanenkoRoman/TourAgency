@@ -1,9 +1,20 @@
 <%--=========================================================================== 
 Footer (bottom area). 
-===========================================================================--%> 
+===========================================================================--%>
+<html >
+<style type="text/css">
+	body { margin:auto; }
+	#footer { position: absolute; }
+	#footer { overflow: hidden; padding: 10px; }
 
-<tr>
+	#footer {
+		bottom: 10px;
+		right: 0px;
 
-	<td id="footer">&copy;<i>Tour Agency (SummaryTask4, EPAM-KNURE Java Training, Romanenko Roman), 2016</i></td>
+	}
+</style>
+</html>
 
-</tr>
+
+	<div id="footer">&copy;<i>Tour Agency (SummaryTask4, EPAM-KNURE Java Training, Romanenko Roman), 2016</i></div>
+

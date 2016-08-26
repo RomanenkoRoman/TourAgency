@@ -140,30 +140,39 @@ INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'France', 500,  2,  3,  2);
 INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'India', 950,   2,  0,  1);       -- 4
 INSERT INTO catalog VALUES(DEFAULT,DEFAULT, 'Hungary', 500,  2,  3,  1);  -- 5
 
+CREATE TABLE discount (
+id   INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+max INTEGER NOT NULL DEFAULT 25,
+step INTEGER NOT NULL DEFAULT 1
+);
 
 
+
+INSERT INTO discount (id,max,step)
+VALUES (DEFAULT,DEFAULT,DEFAULT);
 
 
 CREATE TABLE orders_catalog(
 	order_id INTEGER NOT NULL REFERENCES orders(id),
 	catalog_id INTEGER NOT NULL REFERENCES catalog(id),
-	status_id INTEGER NOT NULL REFERENCES statuses(id)
+	status_id INTEGER NOT NULL REFERENCES statuses(id),
+	discount INTEGER DEFAULT 0
 );
 
-INSERT INTO orders_catalog VALUES(1, 7, 0);
-INSERT INTO orders_catalog VALUES(1, 5, 0);
-INSERT INTO orders_catalog VALUES(1, 8, 0);
+INSERT INTO orders_catalog VALUES(1, 7, 0,DEFAULT );
+INSERT INTO orders_catalog VALUES(1, 5, 0,DEFAULT );
+INSERT INTO orders_catalog VALUES(1, 8, 0,DEFAULT );
 
 
-INSERT INTO orders_catalog VALUES(2, 3, 0);
-INSERT INTO orders_catalog VALUES(2, 4, 0);
+INSERT INTO orders_catalog VALUES(2, 3, 0,DEFAULT );
+INSERT INTO orders_catalog VALUES(2, 4, 0,DEFAULT );
 
-INSERT INTO orders_catalog VALUES(3, 5, 0);
-INSERT INTO orders_catalog VALUES(3, 6, 0);
+INSERT INTO orders_catalog VALUES(3, 5, 0,DEFAULT );
+INSERT INTO orders_catalog VALUES(3, 6, 0,DEFAULT );
 
-INSERT INTO orders_catalog VALUES(4, 6, 0);
-INSERT INTO orders_catalog VALUES(4, 7, 0);
-INSERT INTO orders_catalog VALUES(4, 8, 0);
+INSERT INTO orders_catalog VALUES(4, 6, 0,DEFAULT );
+INSERT INTO orders_catalog VALUES(4, 7, 0,DEFAULT );
+INSERT INTO orders_catalog VALUES(4, 8, 0,DEFAULT );
 
 -- Insert the sum of all orders by this id
 INSERT INTO orders VALUES(1,
@@ -205,6 +214,8 @@ INSERT INTO orders VALUES(4,
 
 
 
+
+
 SELECT * FROM orders_catalog;
 SELECT * FROM catalog;
 SELECT * FROM orders;
@@ -213,5 +224,6 @@ SELECT * FROM statuses;
 SELECT * FROM users;
 SELECT * FROM roles;
 SELECT * FROM type_hotel;
+SELECT * FROM discount;
 
 

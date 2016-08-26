@@ -5,18 +5,28 @@
 <%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
 <%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
 
+
 <html>
 <c:set var="title" value="YourOrder" scope="page" />
 <%@ include file="/WEB-INF/jspf/head.jspf" %>
 
 <body>
+
+<center>
 <table id="main-container">
     <%@ include file="/WEB-INF/jspf/header.jspf" %>
 
     <tr>
         <td class="content">
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
             <form id="your_order_form" action="controller" method="get">
-                <input type="hidden" name="command" value="update_order"/>
+                <input type="hidden" name="command" value="confirmOrder"/>
 
                 <table id="your_order_list">
                     <thead>
@@ -25,13 +35,15 @@
                         <td>Name</td>
                         <td>Price</td>
                         <td>Category</td>
+                        <td>Hotel Type</td>
                         <td>People</td>
+
                     </tr>
                     </thead>
 
                     <c:set var="bill" value="0"/>
                     <c:set var="k" value="0"/>
-                    <%--<jsp:useBean id="results" scope="request" type="java.util.List"/>--%>
+
                     <c:forEach var="item" items="${results}">
                         <c:set var="k" value="${k+1}"/>
                         <c:set var="bill" value="${bill+item.price}"/>
@@ -40,23 +52,27 @@
                             <td>${item.name}</td>
                             <td>${item.price}</td>
                             <td>${item.categoryId}</td>
+                            <td>${item.typeHotel}</td>
                             <td>${item.peopleQuantity}</td>
 
                         </tr>
                     </c:forEach>
-
+                    <tr><td></td>
+                    <tr><td></td>
+                    <tr><td></td>
+                    <tr><td></td>
+                        <td>Your bill is ${bill}</td>
+                        <td><input type="submit" name="confirm1" value="Confirm"></td>
+                    </tr>
                 </table>
 
             </form>
         </td>
     </tr>
-    <tr>
-        <td>
-            Your bill is ${bill}
-            <input type="submit" name="confirm1" value="Confirm">
-        </td>
-    </tr>
+    <tr><%@ include file="/WEB-INF/jspf/footer.jspf" %> </tr>
+
 </table>
-<%@ include file="/WEB-INF/jspf/footer.jspf" %>
+</center>
+
 </body>
 </html>

@@ -49,8 +49,10 @@ public class Controller extends HttpServlet {
         Command command = CommandContainer.get(commandName);
         LOG.trace("Obtained command --> " + command);
 
+
 //         execute command and get forward address
         String forward = Path.PAGE_ERROR_PAGE;
+
         try {
             forward = command.execute(request, response);
 
@@ -62,7 +64,14 @@ public class Controller extends HttpServlet {
         LOG.debug("Controller finished, now go to forward address --> " + forward);
 
         // go to forward
-        request.getRequestDispatcher(forward).forward(request, response);
+
+
+        if (commandName.equals("confirmOrder")) {
+
+            response.sendRedirect(Path.COMMAND_PRIVATE_OFFICE);
+
+        }else
+            request.getRequestDispatcher(forward).forward(request, response);
     }
 
 }

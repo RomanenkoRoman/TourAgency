@@ -43,6 +43,16 @@
         <url-pattern>/statusController</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>DiscountController</servlet-name>
+        <servlet-class>ua.nure.romanenko.SummaryTask4.web.DiscountController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DiscountController</servlet-name>
+        <url-pattern>/discountController</url-pattern>
+    </servlet-mapping>
+
 
     <!--============================================================-->
         <!--Encoding support filter-->

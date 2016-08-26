@@ -19,6 +19,24 @@ public class ExtendedUserOrderBean extends Entity{
     private String categoryName;
     private int hotelPrice;
     private String status;
+    private int people;
+    private int discount;
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    public int getPeople() {
+        return people;
+    }
+
+    public void setPeople(int people) {
+        this.people = people;
+    }
 
     public int getCatalogId() {
         return catalogId;

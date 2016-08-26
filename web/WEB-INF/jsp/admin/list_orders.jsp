@@ -15,6 +15,9 @@
 <%@ include file="/WEB-INF/jspf/head.jspf" %>
 
 <body>
+<center>
+
+
 
 
 <table id="main-container">
@@ -44,6 +47,8 @@
                                 <td>Price</td>
                                 <td>Status</td>
                                 <td>Change Status</td>
+                                <td>Discount</td>
+
                             </tr>
                             </thead>
 
@@ -58,22 +63,33 @@
                                     <td>${bean.hotelName}</td>
                                     <td>${bean.hotelType}</td>
                                     <td>${bean.categoryName}</td>
-                                    <td>${bean.hotelPrice}</td>
+                                    
+                                    
+                                    <td>
+                                    
+                                    <c:choose>
+                                        <c:when test="${bean.discount>0}">
+                                            ${bean.hotelPrice - (bean.hotelPrice / 100 * bean.discount)}
+
+                                        </c:when>
+                                        <c:when test="${bean.discount == 0}">
+                                            ${bean.hotelPrice}
+                                        </c:when>
+                                    </c:choose>
+
+                                    </td>
+                                    
+                                    
                                     <td>${bean.status}</td>
                                     <td>
-                                            <%--<input type="checkbox" name="paid" value="${k}">paid--%>
-                                            <%--<input type="checkbox" name="canceled" value="${k}">canceled--%>
+
 
                                         <input type="radio" name="${k}" value="paid">paid
                                         <input type="radio" name="${k}" value="canceled">canceled
 
-                                            <%--<c:set var="radio">${k}</c:set>--%>
-                                            <%--<c:set var="list">${bean.orderId} ${bean.catalogId}</c:set>--%>
-
-                                            <%--<input type="hidden" name="list" value="${list}"/>--%>
-                                            <%--<input type="hidden" name="catalogId" value="${bean.catalogId}"/>--%>
 
                                     </td>
+                                    <td><input type="number"  step="${step}" max="${max}" min="0" width="2" name="${k+100}"></td>
                                 </tr>
                             </c:forEach>
                             <tr>
@@ -104,5 +120,7 @@
     <%@ include file="/WEB-INF/jspf/footer.jspf" %>
 
 </table>
+</center>
 </body>
+
 </html>

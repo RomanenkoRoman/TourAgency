@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import ua.nure.romanenko.SummaryTask4.Path;
 import ua.nure.romanenko.SummaryTask4.db.DBManager;
 import ua.nure.romanenko.SummaryTask4.db.bean.ExtendedUserOrderBean;
+import ua.nure.romanenko.SummaryTask4.db.dao.DiscountDAO;
+import ua.nure.romanenko.SummaryTask4.db.entity.Discount;
 import ua.nure.romanenko.SummaryTask4.exception.AppException;
 
 import javax.servlet.ServletException;
@@ -32,6 +34,12 @@ public class AdminListOrdersCommand extends Command {
         LOG.trace("Found in DB: extendedUserOrderBeanList --> " + list);
 
         HttpSession session = request.getSession();
+
+        Discount discount = DiscountDAO.getDiscount();
+
+        request.setAttribute("max",discount.getMax());
+        request.setAttribute("step",discount.getStep());
+
         session.setAttribute("extendedUserOrderBeanList",list);
         request.setAttribute("extendedUserOrderBeanList",list);
         LOG.trace("Set the request attribute: extendedUserOrderBeanList --> "

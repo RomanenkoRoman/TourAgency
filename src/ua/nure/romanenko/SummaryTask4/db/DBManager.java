@@ -115,39 +115,43 @@ public final class DBManager {
 
 */
     private static final String SQL_GET_EXTENDED_USER_ORDER_BEANS = "Select \n" +
-            "catalog.id as catalogId,"+
-            "orders.id as orderNum,"+
+            "catalog.id as catalogId,\n" +
+            "orders.id as orderNum,\n" +
+            "q_people,\n" +
             "`users`.`first_name` as `First name`, \n" +
             "`users`.`last_name` as `Last name`, \n" +
             "`catalog`.`name` as `Hotel name`,\n" +
             "`catalog`.`price` as `Hotel price`,\n" +
             "`type_hotel`.`name` as `Hotel type`,\n" +
             "`categories`.`name` as `Category name`,\n" +
-            "`statuses`.`name` as `Status`\n" +
-            "From`users` \n" +
-            "Left Join `orders` on `users`.`id` = `orders`.`user_id`   #\n" +
-            "LEFT Join `orders_catalog` on `orders`.`id` = `orders_catalog`.`order_id`\n" +
-            "LEFT Join `statuses` on `statuses`.`id` = `orders_catalog`.`status_id`\n" +
-            "Left Join `catalog` on `catalog`.`id` = `orders_catalog`.`catalog_id`#\n" +
-            "LEFT Join `type_hotel` on `type_hotel`.`id` = `catalog`.`type_hotel_id`\n" +
-            "LEFT Join `categories` on `categories`.`id` = `catalog`.`category_id`\n" +
-
-            "Where `users`.`id` in (SELECT id from users) order BY users.id";
+            "`statuses`.`name` as `Status`,\n" +
+            " orders_catalog.discount\n" +
+            " From `users`\n" +
+            " Left Join `orders` on `users`.`id` = `orders`.`user_id` \n" +
+            " LEFT Join `orders_catalog` on `orders`.`id` = `orders_catalog`.`order_id`\n" +
+            " LEFT Join `statuses` on `statuses`.`id` = `orders_catalog`.`status_id`\n" +
+            " Left Join `catalog` on `catalog`.`id` = `orders_catalog`.`catalog_id`\n" +
+            " LEFT Join `type_hotel` on `type_hotel`.`id` = `catalog`.`type_hotel_id`\n" +
+            " LEFT Join `categories` on `categories`.`id` = `catalog`.`category_id`\n" +
+            "\n" +
+            " Where `users`.`id` in (SELECT id from users) order BY users.id";
     private static final String SQL_GET_EXTENDED_USER_ORDER_BEAN = "Select \n" +
-            "orders.id as orderNum,"+
-            "catalog.id as catalogId,"+
+            "orders.id as orderNum,\n" +
+            "catalog.id as catalogId,\n" +
+            "q_people,\n" +
             "`users`.`first_name` as `First name`, \n" +
             "`users`.`last_name` as `Last name`, \n" +
             "`catalog`.`name` as `Hotel name`,\n" +
             "`catalog`.`price` as `Hotel price`,\n" +
             "`type_hotel`.`name` as `Hotel type`,\n" +
             "`categories`.`name` as `Category name`,\n" +
-            "`statuses`.`name` as `Status`\n" +
-            "From`users` \n" +
-            "Left Join `orders` on `users`.`id` = `orders`.`user_id`   #\n" +
+            "`statuses`.`name` as `Status`,\n" +
+            "orders_catalog.discount\n" +
+            "From`users`\n" +
+            "Left Join `orders` on `users`.`id` = `orders`.`user_id` \n" +
             "LEFT Join `orders_catalog` on `orders`.`id` = `orders_catalog`.`order_id`\n" +
             "LEFT Join `statuses` on `statuses`.`id` = `orders_catalog`.`status_id`\n" +
-            "Left Join `catalog` on `catalog`.`id` = `orders_catalog`.`catalog_id`#\n" +
+            "Left Join `catalog` on `catalog`.`id` = `orders_catalog`.`catalog_id`\n" +
             "LEFT Join `type_hotel` on `type_hotel`.`id` = `catalog`.`type_hotel_id`\n" +
             "LEFT Join `categories` on `categories`.`id` = `catalog`.`category_id`\n" +
             "Where `users`.`id` = ? order BY users.id AND hot DESC";
@@ -198,7 +202,8 @@ public final class DBManager {
             "    ON catalog.id=orders_catalog.catalog_id\n" +
             "), ?, ?);";
     private static final String SQL_CREATE_ORDER_CATALOG_DEPENDENCY =
-            "INSERT INTO orders_catalog VALUES(?,?)";
+            "INSERT INTO orders_catalog VALUES(?,?,0)";
+    private static final String SQL_FIND_MAX_ID_NUMBER = "SELECT max(id) FROM mydbtest.orders;";
 
     /**
      * Returns a DB connection from the Pool Connections. Before using this
@@ -286,6 +291,8 @@ public final class DBManager {
 
         try {
             con = getConnection();
+            con.setAutoCommit(false);
+
             ps = con.prepareStatement(SQL_GET_EXTENDED_USER_ORDER_BEAN);
             ps.setInt(1,user.getId());
             rs = ps.executeQuery();
@@ -296,7 +303,6 @@ public final class DBManager {
         } catch (SQLException e) {
             rollback(con);
             LOG.error(Messages.ERR_CANNOT_OBTAIN_USER_ORDER_BEANS, e);
-            throw new DBException(Messages.ERR_CANNOT_OBTAIN_USER_ORDER_BEANS, e);
         } finally {
             close(con, ps, rs);
         }
@@ -348,6 +354,7 @@ public final class DBManager {
         try {
             con = getConnection();
             stmt = con.createStatement();
+            con.setAutoCommit(false);
             rs = stmt.executeQuery(SQL_FIND_ALL_CATALOG_ITEMS);
             while (rs.next()) {
                 catalogItemList.add(extractCatalogItem(rs));
@@ -826,6 +833,8 @@ public final class DBManager {
         bean.setStatus(rs.getString(Fields.NEW_STATUS));
         bean.setOrderId(rs.getInt(Fields.ORDER_ID));
         bean.setCatalogId(rs.getInt(Fields.CATALOG_ITEM_ID));
+        bean.setPeople(rs.getInt(Fields.CATALOG_ITEM_QUANTITY_PEOPLE));
+        bean.setDiscount(rs.getInt(Fields.USER_ORDER_BEAN_DISCOUNT));
         return bean;
 
     }
