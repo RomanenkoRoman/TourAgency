@@ -27,13 +27,6 @@ public class DiscountSettingsCommand extends Command {
         LOG.trace("DiscountSettingsCommand starts");
 
 
-//        int max = (int) request.getAttribute("max");
-//        LOG.trace("Catch max --> " + max);
-//        int step = (int) request.getAttribute("step");
-//        LOG.trace("Catch step --> " + step);
-//
-//        DiscountDAO.updateDiscount(max, step);
-
         LOG.trace("DiscountSettingsCommand finished");
         return Path.PAGE_DISCOUNT_SETTINGS;
     }

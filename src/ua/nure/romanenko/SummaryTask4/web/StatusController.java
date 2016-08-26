@@ -69,7 +69,6 @@ public class StatusController extends HttpServlet {
                 LOG.error("cannot update discount in bean", e);
             }
 
-// TODO: 25.08.2016 здесь нужно добавлять полученный дисконт в юзер бин
             LOG.trace("Find in parameters in " + i + " --> "
                     + Arrays.toString(request.getParameterValues("" + i)));
             LOG.trace("Find in parameters in (discount) " + (i + 100) + " --> "

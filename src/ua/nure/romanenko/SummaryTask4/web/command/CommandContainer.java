@@ -20,6 +20,7 @@ public class CommandContainer {
         commands.put("logout", new LogoutCommand());
         commands.put("viewSettings", new ViewSettingsCommand());
         commands.put("noCommand", new NoCommand());
+        commands.put("signIn", new SignInCommand());
 
 
         // client commands
@@ -28,6 +29,7 @@ public class CommandContainer {
         commands.put("private_office", new PrivateOfficeCommand());
         commands.put("filterCatalog", new FilterCatalogCommand());
         commands.put("confirmOrder", new ConfirmOrderCommand());
+        commands.put("updateSettings", new UpdateSettingsCommand());
 
         // admin commands
         commands.put("listOrders", new ListOrdersCommand());

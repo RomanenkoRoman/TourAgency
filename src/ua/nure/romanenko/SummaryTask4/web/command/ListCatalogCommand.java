@@ -41,6 +41,11 @@ public class ListCatalogCommand extends Command {
 		LOG.trace("Set the request attribute: catalogItems --> " + catalogItems);
 		
 		LOG.debug("Command finished");
+
+		if (session.getAttribute("guest").equals("I'm a guest")) {
+			session.removeAttribute("guest");
+			return "/index.jsp";
+		}
 		return Path.PAGE_LIST_CATALOG;
 	}
 

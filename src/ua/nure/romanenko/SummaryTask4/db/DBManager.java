@@ -130,7 +130,7 @@ public final class DBManager {
             " Left Join `orders` on `users`.`id` = `orders`.`user_id` \n" +
             " LEFT Join `orders_catalog` on `orders`.`id` = `orders_catalog`.`order_id`\n" +
             " LEFT Join `statuses` on `statuses`.`id` = `orders_catalog`.`status_id`\n" +
-            " Left Join `catalog` on `catalog`.`id` = `orders_catalog`.`catalog_id`\n" +
+            " INNER Join `catalog` on `catalog`.`id` = `orders_catalog`.`catalog_id`\n" +
             " LEFT Join `type_hotel` on `type_hotel`.`id` = `catalog`.`type_hotel_id`\n" +
             " LEFT Join `categories` on `categories`.`id` = `catalog`.`category_id`\n" +
             "\n" +
@@ -151,7 +151,7 @@ public final class DBManager {
             "Left Join `orders` on `users`.`id` = `orders`.`user_id` \n" +
             "LEFT Join `orders_catalog` on `orders`.`id` = `orders_catalog`.`order_id`\n" +
             "LEFT Join `statuses` on `statuses`.`id` = `orders_catalog`.`status_id`\n" +
-            "Left Join `catalog` on `catalog`.`id` = `orders_catalog`.`catalog_id`\n" +
+            "INNER Join `catalog` on `catalog`.`id` = `orders_catalog`.`catalog_id`\n" +
             "LEFT Join `type_hotel` on `type_hotel`.`id` = `catalog`.`type_hotel_id`\n" +
             "LEFT Join `categories` on `categories`.`id` = `catalog`.`category_id`\n" +
             "Where `users`.`id` = ? order BY users.id AND hot DESC";
@@ -167,7 +167,7 @@ public final class DBManager {
             "Left Join `orders` on `users`.`id` = `orders`.`user_id`   #\n" +
             "LEFT Join `orders_catalog` on `orders`.`id` = `orders_catalog`.`order_id`\n" +
             "LEFT Join `statuses` on `statuses`.`id` = `orders_catalog`.`status_id`\n" +
-            "Left Join `catalog` on `catalog`.`id` = `orders_catalog`.`catalog_id`#\n" +
+            "INNER Join `catalog` on `catalog`.`id` = `orders_catalog`.`catalog_id`#\n" +
             "LEFT Join `type_hotel` on `type_hotel`.`id` = `catalog`.`type_hotel_id`\n" +
             "LEFT Join `categories`  on `categories`.`id` = `catalog`.`category_id`\n" +
             "\n" +
@@ -188,7 +188,7 @@ public final class DBManager {
             "Left Join `orders` on `users`.`id` = `orders`.`user_id`   #\n" +
             "LEFT Join `orders_catalog` on `orders`.`id` = `orders_catalog`.`order_id`\n" +
             "LEFT Join `statuses` on `statuses`.`id` = `orders_catalog`.`status_id`\n" +
-            "Left Join `catalog` on `catalog`.`id` = `orders_catalog`.`catalog_id`#\n" +
+            "INNER Join `catalog` on `catalog`.`id` = `orders_catalog`.`catalog_id`#\n" +
             "LEFT Join `type_hotel` on `type_hotel`.`id` = `catalog`.`type_hotel_id`\n" +
             "LEFT Join `categories` on `categories`.`id` = `catalog`.`category_id`\n" +
             "Where `users`.`id` in (?) order BY users.id";

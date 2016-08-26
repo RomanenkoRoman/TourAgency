@@ -9,6 +9,7 @@ import ua.nure.romanenko.SummaryTask4.exception.AppException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -39,7 +40,16 @@ public class FilterCatalogCommand extends Command {
 
         request.setAttribute("catalogItems", catalogItems);
 
+        HttpSession session = request.getSession();
 
+        LOG.trace("find in attribute address --> "+session.getAttribute("guest"));
+
+
+        if (session.getAttribute("guest").equals("I'm a guest")) {
+            LOG.trace("find in attribute guest" + request.getAttribute("guest"));
+            session.removeAttribute("guest");
+            return "/index.jsp";
+        }
         return Path.COMMAND_LIST_CATALOG;
     }
 

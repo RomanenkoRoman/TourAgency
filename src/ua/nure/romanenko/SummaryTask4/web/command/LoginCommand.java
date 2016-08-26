@@ -32,7 +32,7 @@ public class LoginCommand extends Command {
 		// obtain login and password from a request
 		DBManager manager = DBManager.getInstance();
 		String login = request.getParameter("login");
-		LOG.trace("Request parameter: loging --> " + login);
+		LOG.trace("Request parameter: login --> " + login);
 
 		String password = request.getParameter("password");
 		if (login == null || password == null || login.isEmpty() || password.isEmpty()) {
@@ -61,7 +61,7 @@ public class LoginCommand extends Command {
 
 		if (userRole == Role.MANAGER) {
 			forward = Path.COMMAND_ADMIN_LIST_CATALOG;
-			// TODO: 22.08.2016 сделать разные листы для манагера и юзера
+
 		}
 
 		session.setAttribute("user", user);

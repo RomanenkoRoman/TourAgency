@@ -15,6 +15,8 @@ public class Path {
     public static final String PAGE_YOUR_ORDER = "/WEB-INF/jsp/client/yourOrder.jsp";
     public static final String PAGE_PRIVATE_OFFICE = "/WEB-INF/jsp/client/private_office.jsp";
     public static final String PAGE_DISCOUNT_SETTINGS = "/WEB-INF/jsp/admin/discount.jsp";
+    public static final String PAGE_SIGN_IN = "/signIn.jsp";
+    public static final String PAGE_SUCCESSFUL = "/WEB-INF/jsp/successful.jsp";
 
 
 

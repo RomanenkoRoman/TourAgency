@@ -17,6 +17,17 @@ public class User extends Entity {
 
 	private int roleId;
 
+	public User() {
+	}
+
+	public User(String firstName, String lastName, String login, String password, int roleId) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.login = login;
+		this.password = password;
+		this.roleId = roleId;
+	}
+
 	public String getLogin() {
 		return login;
 	}
