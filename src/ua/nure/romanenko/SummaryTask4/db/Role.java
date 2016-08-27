@@ -10,8 +10,8 @@ public enum Role {
     ADMIN, MANAGER, USER;
 
     public static Role getRole(User user) {
-        int roleId = user.getRoleId();
-        return Role.values()[roleId];
+        String role = user.getRole();
+        return Role.valueOf(role.toUpperCase());
     }
 
     public String getName() {

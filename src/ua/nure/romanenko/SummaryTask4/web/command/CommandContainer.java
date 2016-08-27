@@ -20,7 +20,7 @@ public class CommandContainer {
         commands.put("logout", new LogoutCommand());
         commands.put("viewSettings", new ViewSettingsCommand());
         commands.put("noCommand", new NoCommand());
-        commands.put("signIn", new SignInCommand());
+        commands.put("signUp", new SignUpCommand());
 
 
         // client commands
@@ -37,6 +37,13 @@ public class CommandContainer {
         commands.put("doHotUnHot", new DoHotUnHotCommand());
         commands.put("adminListCatalog", new AdminListCatalogCommand());
         commands.put("discount", new DiscountSettingsCommand());
+        commands.put("deleteItems", new DeleteCatalogItemsCommand());
+        commands.put("deleteSelected", new DeleteCommand());
+        commands.put("addCatalogItem", new AddCatalogItemCommand());
+        commands.put("showAddPage", new ShowAddPageCommand());
+        commands.put("showAllUsers", new ShowAllUsersCommand());
+        commands.put("banUnBan", new BanUnBanCommand());
+        commands.put("showErrorToBannedUser", new ShowErrorToBannedUserCommand());
 
         LOG.debug("Command container was successfully initialized");
         LOG.trace("Number of commands --> " + commands.size());

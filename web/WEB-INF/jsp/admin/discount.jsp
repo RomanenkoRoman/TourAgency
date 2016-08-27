@@ -14,30 +14,39 @@
 </head>
 <body>
 <center>
-<form name="discount settings" action="discountController">
-    <input type="hidden" name="command" value="discount">
+    <form name="discount settings" action="discountController">
+        <input type="hidden" name="command" value="discount">
 
-    <table id="main-container">
-        <%@ include file="/WEB-INF/jspf/header.jspf" %>
-        <tr>
-            <td>
-        <div>
-            <p>Max border</p>
-            <input type="number" min="0" max="100" step="1" name="max" width="3">
-        </div>
-        <div>
-            <p>Step</p>
-            <input type="number" min="0" max= "5" name="step" width="4">
-        </div>
-        <div>
-            <br>
-            <input type="submit" name="Update" value="Update">
-        </div>
-            </td>
-        </tr>
-    </table>
 
-</form>
+        <table id="main-container">
+            <%@ include file="/WEB-INF/jspf/header.jspf" %>
+            <tr>
+                <td>
+
+                        <label><h3>Discount settings</h3></label>
+
+
+                        <div>
+
+                            <p>Max border</p>
+                            <p><input type="number" min="0" max="100" step="1" name="max" width="3"></p>
+                        </div>
+                        <div>
+                            <p>Step</p>
+                            <p><input type="number" min="0" max="5" name="step" width="4"></p>
+                        </div>
+
+
+                    <div>
+                        <br>
+                        <p><input type="submit" name="Update" value="Update"></p>
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+
+    </form>
 </center>
 <%@ include file="/WEB-INF/jspf/footer.jspf" %>
 </body>

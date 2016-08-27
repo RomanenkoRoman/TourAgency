@@ -28,8 +28,10 @@
             <form id="make_order" action="controller">
                 <input type="hidden" name="command" value="doHotUnHot"/>
 
-
+                <fieldset>
+                    <legend><h3>Change hot status</h3></legend>
                 <table id="list_catalog_table">
+
                     <thead>
                     <tr>
                         <td>№</td>
@@ -67,7 +69,9 @@
                             </c:choose>
                         </tr>
 
+
                     </c:forEach>
+                </fieldset>
                     <tr>
 
                         <td></td>

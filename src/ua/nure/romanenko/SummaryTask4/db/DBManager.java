@@ -57,13 +57,37 @@ public final class DBManager {
     // SQL queries
     // //////////////////////////////////////////////////////////
 
-    private static final String SQL_FIND_USER_BY_LOGIN = "SELECT * FROM users WHERE login=?";
+    private static final String SQL_FIND_USER_BY_LOGIN = "SELECT \n" +
+            "users.id,\n" +
+            "login,\n" +
+            "password,\n" +
+            "first_name,\n" +
+            "last_name,\n" +
+            "roles.name as role,\n" +
+            "ban\n" +
+            "\n" +
+            "FROM users \n" +
+            "inner join roles on users.role_id = roles.id\n" +
+            " \n" +
+            "WHERE login= ?";
 
     private static final String SQL_FIND_ALL_USERS = "SELECT * FROM users";
 
     private static final String SQL_FIND_ALL_ORDERS = "SELECT * FROM orders";
 
-    private static final String SQL_FIND_USER_BY_ID = "SELECT * FROM users WHERE id=?";
+    private static final String SQL_FIND_USER_BY_ID = "SELECT \n" +
+            "users.id,\n" +
+            "login,\n" +
+            "password,\n" +
+            "first_name,\n" +
+            "last_name,\n" +
+            "roles.name as role,\n" +
+            "ban"+
+            "\n" +
+            " FROM mydbtest.users\n" +
+            "LEFT join roles on roles.id = users.role_id\n" +
+            "\n" +
+            "WHERE users.id=?";
 
     private static final String SQL_FIND_ALL_CATALOG_ITEMS = "SELECT \n" +
             "catalog.hot as 'hot',\n" +
@@ -845,14 +869,15 @@ public final class DBManager {
      * @param rs Result set from which a user entity will be extracted.
      * @return User entity
      */
-    private User extractUser(ResultSet rs) throws SQLException {
+    public User extractUser(ResultSet rs) throws SQLException {
         User user = new User();
         user.setId(rs.getInt(Fields.ENTITY_ID));
         user.setLogin(rs.getString(Fields.USER_LOGIN));
         user.setPassword(rs.getString(Fields.USER_PASSWORD));
         user.setFirstName(rs.getString(Fields.USER_FIRST_NAME));
         user.setLastName(rs.getString(Fields.USER_LAST_NAME));
-        user.setRoleId(rs.getInt(Fields.USER_ROLE_ID));
+        user.setRole(rs.getString(Fields.USER_ROLE));
+        user.setBan(rs.getBoolean(Fields.USER_BAN));
         return user;
     }
 

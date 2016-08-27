@@ -58,6 +58,9 @@ Header (top area).
                         <a href="controller?command=adminListCatalog">Admin Catalog</a> &nbsp;
                         <a href="controller?command=adminListOrders">All orders</a> &nbsp;
                         <a href="controller?command=discount">Discount Settings</a> &nbsp;
+                        <a href="controller?command=deleteItems">Delete Items</a> &nbsp;
+                        <a href="controller?command=showAllUsers">Ban/Unbun Users</a> &nbsp;
+                        <a href="controller?command=showAddPage">Add Catalog Item</a> &nbsp;
 
                     </c:when>
 
@@ -120,13 +123,16 @@ Header (top area).
         </c:if>
 
         <c:if test="${empty user and title ne 'Login'}">
-            <div id="rightHeader">
-                <a href="login.jsp">Login</a>
-                <a href="signIn.jsp">Sign in</a>
+            <div id="leftHeader">
+                <a href="index.jsp">Guest Catalog</a>
+
             </div>
 
 
-
+            <div id="rightHeader">
+                <a href="login.jsp">Login</a>
+                <a href="signUp.jsp">Sign Up</a>
+            </div>
 
         </c:if>
 

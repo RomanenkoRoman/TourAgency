@@ -15,8 +15,14 @@ public class Path {
     public static final String PAGE_YOUR_ORDER = "/WEB-INF/jsp/client/yourOrder.jsp";
     public static final String PAGE_PRIVATE_OFFICE = "/WEB-INF/jsp/client/private_office.jsp";
     public static final String PAGE_DISCOUNT_SETTINGS = "/WEB-INF/jsp/admin/discount.jsp";
-    public static final String PAGE_SIGN_IN = "/signIn.jsp";
+    public static final String PAGE_SIGN_IN = "/signUp.jsp";
+    public static final String PAGE_DELETE_ITEMS = "/WEB-INF/jsp/admin/deleteItems.jsp";
     public static final String PAGE_SUCCESSFUL = "/WEB-INF/jsp/successful.jsp";
+    public static final String PAGE_ADD_CATALOG_ITEM = "/WEB-INF/jsp/admin/addCatalogItem.jsp";
+    public static final String PAGE_INDEX = "/index.jsp";
+    public static final String PAGE_CATALOG_ITEM_SUCCESSFUL_ADDED = "/WEB-INF/jsp/catalogItemSuccessfulAdded.jsp";
+    public static final String PAGE_LIST_USERS = "/WEB-INF/jsp/admin/list_users.jsp";
+    public static final String PAGE_YOU_ARE_BANNED = "/WEB-INF/jsp/client/you_are_banned.jsp";
 
 
 
@@ -28,5 +34,9 @@ public class Path {
     public static final String COMMAND_CONFIRM_ORDER = "/controller?command=confirmOrder";
     public static final String COMMAND_PRIVATE_OFFICE = "/controller?command=private_office";
     public static final String COMMAND_DISCOUNT = "/controller?command=discount";
+    public static final String COMMAND_BAN_UNBAN_USERS = "/controller?command=banUnBan";
+    public static final String COMMAND_SHOW_ALL_USERS = "/controller?command=showAllUsers";
+    public static final String COMMAND_SHOW_ERROR_TO_BANNED_USER = "/controller?command=showErrorToBannedUser";
+    public static final String COMMAND_SHOW_ADD_PAGE = "/controller?command=showAddPage";
 
 }

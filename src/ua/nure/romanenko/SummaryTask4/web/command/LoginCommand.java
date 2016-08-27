@@ -6,6 +6,7 @@ import ua.nure.romanenko.SummaryTask4.db.DBManager;
 import ua.nure.romanenko.SummaryTask4.db.Role;
 import ua.nure.romanenko.SummaryTask4.db.entity.User;
 import ua.nure.romanenko.SummaryTask4.exception.AppException;
+import ua.nure.romanenko.SummaryTask4.web.ban.BanList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,12 +35,16 @@ public class LoginCommand extends Command {
 		String login = request.getParameter("login");
 		LOG.trace("Request parameter: login --> " + login);
 
+
 		String password = request.getParameter("password");
-		if (login == null || password == null || login.isEmpty() || password.isEmpty()) {
+		if (password == null || login.isEmpty() || password.isEmpty()) {
 			throw new AppException("Login/password cannot be empty");
 		}
 
 		User user = manager.findUserByLogin(login);
+
+
+
 		LOG.trace("Found in DB: user --> " + user);
 
 		if (user == null || !password.equals(user.getPassword())) {
@@ -50,6 +55,7 @@ public class LoginCommand extends Command {
 		LOG.trace("userRole --> " + userRole);
 		
 		String forward = Path.PAGE_ERROR_PAGE;
+
 
 		if (userRole == Role.ADMIN) {
 			forward = Path.COMMAND_ADMIN_LIST_CATALOG;
@@ -64,6 +70,7 @@ public class LoginCommand extends Command {
 
 		}
 
+
 		session.setAttribute("user", user);
 		LOG.trace("Set the session attribute: user --> " + user);
 
@@ -71,6 +78,24 @@ public class LoginCommand extends Command {
 		LOG.trace("Set the session attribute: userRole --> " + userRole);
 
 		LOG.info("User " + user + " logged as " + userRole.toString().toLowerCase());
+
+		LOG.trace("BanList.getBanList().contains(user) --> "+
+				BanList.getBanList().contains(user));
+		if (BanList.getBanList().contains(user)) {
+			forward = Path.COMMAND_SHOW_ERROR_TO_BANNED_USER;
+			session = request.getSession(false);
+			if (session != null) {
+				session.invalidate();
+			}
+		}
+
+		session = request.getSession();
+		try {
+			if (session.getAttribute("guest")!=null) {
+                session.removeAttribute("guest");
+            }
+		} catch (NullPointerException ignored) {
+		}
 
 		LOG.debug("Command finished");
 		return forward;

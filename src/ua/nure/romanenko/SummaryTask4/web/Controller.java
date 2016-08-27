@@ -66,12 +66,17 @@ public class Controller extends HttpServlet {
         // go to forward
 
 
-        if (commandName.equals("confirmOrder")) {
-
-            response.sendRedirect(Path.COMMAND_PRIVATE_OFFICE);
-
-        }else
-            request.getRequestDispatcher(forward).forward(request, response);
+        switch (commandName) {
+            case "confirmOrder":
+                response.sendRedirect(Path.COMMAND_PRIVATE_OFFICE);
+                break;
+            case "addCatalogItem":
+                response.sendRedirect(Path.COMMAND_SHOW_ADD_PAGE);
+                break;
+            default:
+                request.getRequestDispatcher(forward).forward(request, response);
+                break;
+        }
     }
 
 }

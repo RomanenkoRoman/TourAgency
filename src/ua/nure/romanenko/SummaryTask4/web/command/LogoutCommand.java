@@ -26,7 +26,7 @@ public class LogoutCommand extends Command {
 		}
 
 		LOG.debug("Command finished");
-		return Path.PAGE_LOGIN;
+		return Path.PAGE_INDEX;
 	}
 
 }

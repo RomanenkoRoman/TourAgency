@@ -16,7 +16,7 @@
 <%@ include file="/WEB-INF/jspf/head.jspf" %>
 
 <body>
-
+<center>
 <table id="main-container">
 
     <%-- HEADER --%>
@@ -60,5 +60,6 @@
     <%@ include file="/WEB-INF/jspf/footer.jspf"%>
 
 </table>
+</center>
 </body>
 </html>

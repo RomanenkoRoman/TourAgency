@@ -31,73 +31,88 @@
             <br>
         </td>
         <c:choose>
-            <c:when test="${fn:length(orders) == 0}">No such orders</c:when>
-            <c:otherwise>
-                <table id="your_order_list">
-                    <thead>
-                    <tr>
-                        <td>№</td>
-                        <td>Name</td>
-                        <td>Price</td>
-                        <td>Category</td>
-                        <td>Hotel Type</td>
-                        <td>People</td>
-                        <td>Status</td>
-                        <td>Discount</td>
-                    </tr>
-                    </thead>
 
-                    <c:set var="bill" value="0"/>
-                    <c:set var="k" value="0"/>
-                    Hello,${user.firstName} ${user.lastName}. This is your private office;<br>
-                    Your orders is :
-                    <br>
-                    <br>
-                    <c:forEach var="item" items="${orders}">
-                        <c:set var="k" value="${k+1}"/>
+        <c:when test="${fn:length(orders) == 0}">
 
-                        <tr>
-                            <td><c:out value="${k}"/></td>
-                            <td>${item.hotelName}</td>
-                            <td>
-                                <c:choose>
-                                    <c:when test="${item.discount>0}">
-                                        ${item.hotelPrice - (item.hotelPrice / 100 * item.discount)}
-
-                                    </c:when>
-                                    <c:when test="${item.discount == 0}">
-                                        ${item.hotelPrice}
-                                    </c:when>
-                                </c:choose>
-                            </td>
-                            <td>${item.categoryName}</td>
-                            <td>${item.hotelType}</td>
-                            <td>${item.people}</td>
-                            <td>${item.status}</td>
-
-                            <td>
-                                <c:choose>
-                                    <c:when test="${item.discount>0}">
-                                        ${item.discount}%
-                                    </c:when>
-                                </c:choose>
-
-                            </td>
-
-
-                        </tr>
-                    </c:forEach>
-
-                </table>
-            </c:otherwise>
-        </c:choose>
-        </form>
-
-
+    <tr>
+        <td class="content">
+            <h3 class="error">
+                Hello,${user.firstName} ${user.lastName}. This is your private office;<br>
+                No such orders
+            </h3>
         </td>
+    </tr>
+
+    </c:when>
+    <c:otherwise>
+        <table id="your_order_list">
+            <thead>
+            <tr>
+                <td>№</td>
+                <td>Name</td>
+                <td>Price</td>
+                <td>Category</td>
+                <td>Hotel Type</td>
+                <td>People</td>
+                <td>Status</td>
+                <td>Discount</td>
+            </tr>
+            </thead>
+
+            <c:set var="bill" value="0"/>
+            <c:set var="k" value="0"/>
+
+            <h3>Hello,${user.firstName} ${user.lastName}. This is your private office;<br>
+                Your orders is :
+            </h3>
+            <br>
+            <br>
+            <c:forEach var="item" items="${orders}">
+                <c:set var="k" value="${k+1}"/>
+
+                <tr>
+                    <td><c:out value="${k}"/></td>
+                    <td>${item.hotelName}</td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${item.discount>0}">
+                                ${item.hotelPrice - (item.hotelPrice / 100 * item.discount)}
+
+                            </c:when>
+                            <c:when test="${item.discount == 0}">
+                                ${item.hotelPrice}
+                            </c:when>
+                        </c:choose>
+                    </td>
+                    <td>${item.categoryName}</td>
+                    <td>${item.hotelType}</td>
+                    <td>${item.people}</td>
+                    <td>${item.status}</td>
+
+                    <td>
+                        <c:choose>
+                            <c:when test="${item.discount>0}">
+                                ${item.discount}%
+                            </c:when>
+                        </c:choose>
+
+                    </td>
+
+
+                </tr>
+            </c:forEach>
+
+        </table>
+    </c:otherwise>
+    </c:choose>
+    </form>
+
+
+    </td>
     </tr>
 </table>
 </center>
+
 
 <%@ include file="/WEB-INF/jspf/footer.jspf" %>
 </body>

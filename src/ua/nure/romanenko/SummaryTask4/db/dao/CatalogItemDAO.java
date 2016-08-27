@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Catalog item dao
  * Created by Роман on 23.08.2016.
  */
 public class CatalogItemDAO {
@@ -42,6 +43,12 @@ public class CatalogItemDAO {
             "AND catalog.q_people BETWEEN ? AND ?\n" +
             "\n" +
             "ORDER BY catalog.id AND catalog.hot DESC;";
+
+    private static final String SQL_DELETE_CATALOG_ITEM = "Delete from catalog\n" +
+            "where id = ?;";
+
+    private static final String SQL_ADD_CATALOG_ITEM =
+            "INSERT INTO catalog VALUES(DEFAULT,DEFAULT, ?, ?, ?, ?, ?);";
 
     public static boolean doHot(String[] listID) throws DBException {
         boolean cur = false;
@@ -152,7 +159,7 @@ public class CatalogItemDAO {
         int highBorderPeople = 0;
         if (people == null) {
             lowBorderPeople = 0;
-            highBorderPeople = 9999;
+            highBorderPeople = 99999;
         } else {
             lowBorderPeople = Integer.parseInt(people);
             highBorderPeople = Integer.parseInt(people);
@@ -223,5 +230,85 @@ public class CatalogItemDAO {
         return arr;
     }
 
+    public static void deleteItems(String[] listID) throws DBException {
+        if (listID != null) {
+            LOG.trace("deleteItems method starts");
+            DBManager manager = DBManager.getInstance();
+            PreparedStatement ps = null;
+            Connection con = null;
+            try {
+                con = manager.getConnection();
+                con.setAutoCommit(false);
+
+                ps = con.prepareStatement(SQL_DELETE_CATALOG_ITEM);
+                for (String aListID : listID) {
+                    LOG.trace("current id element --> " + aListID);
+                    ps.setInt(1, Integer.parseInt(aListID));
+                    ps.executeUpdate();
+                }
+                con.commit();
+
+                LOG.trace("deleteItems method finished");
+            } catch (SQLException e) {
+                manager.rollback(con);
+                LOG.error("error with delete catalog items", e);
+                throw new DBException("error with delete catalog items", e);
+            } finally {
+                manager.close(con);
+                manager.close(ps);
+            }
+
+        }
+    }
+
+    public static boolean addCatalogItem(String name, String category, String hotelType,
+                                         String quantity, String price) throws DBException {
+        LOG.trace("addCatalogItem method starts");
+        if (name == null || category == null || hotelType == null ||
+                quantity == null || price == null) {
+            return false;
+        }
+
+        if (name.isEmpty() || category.isEmpty() || hotelType.isEmpty() ||
+                quantity.isEmpty() || price.isEmpty()) {
+            return false;
+        }
+
+
+
+        LOG.trace("argument 'name' --> " + name);
+        LOG.trace("argument 'category' --> " + category);
+        LOG.trace("argument 'hotelType' --> " + hotelType);
+        LOG.trace("argument 'quantity' --> " + quantity);
+        LOG.trace("argument 'price' --> " + price);
+
+        DBManager manager = DBManager.getInstance();
+        PreparedStatement ps = null;
+        Connection con = null;
+
+        try {
+            con = manager.getConnection();
+            con.setAutoCommit(false);
+            ps = con.prepareStatement(SQL_ADD_CATALOG_ITEM);
+            ps.setString(1, name);
+            ps.setInt(2, Integer.parseInt(price));
+            ps.setInt(3, TourType.valueOf(category.toUpperCase()).ordinal());
+            ps.setInt(4, TypeHotel.valueOf(hotelType.toUpperCase()).ordinal());
+            ps.setInt(5, Integer.parseInt(quantity));
+            ps.executeUpdate();
+
+
+            con.commit();
+        } catch (SQLException e) {
+            manager.rollback(con);
+            LOG.error("Cannot add item catalog" + e);
+            throw new DBException("Cannot add item catalog", e);
+        } finally {
+            manager.close(con);
+            manager.close(ps);
+        }
+        LOG.trace("addCatalogItem method finished");
+        return true;
+    }
 
 }

@@ -15,17 +15,27 @@ public class User extends Entity {
 	
 	private String lastName;
 
-	private int roleId;
+	private String role;
+
+	private boolean ban;
 
 	public User() {
 	}
 
-	public User(String firstName, String lastName, String login, String password, int roleId) {
+	public User(String firstName, String lastName, String login, String password, String role, boolean ban) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.login = login;
 		this.password = password;
-		this.roleId = roleId;
+		this.role = role;
+	}
+
+	public boolean isBan() {
+		return ban;
+	}
+
+	public void setBan(boolean ban) {
+		this.ban = ban;
 	}
 
 	public String getLogin() {
@@ -59,22 +69,43 @@ public class User extends Entity {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	public int getRoleId() {
-		return roleId;
+
+	public String getRole() {
+		return role;
 	}
 
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	@Override
 	public String toString() {
 		return "User{" +
-				"login='" + login + '\'' +
-				", firstName='" + firstName + '\'' +
+				"firstName='" + firstName + '\'' +
+				", login='" + login + '\'' +
 				", lastName='" + lastName + '\'' +
-				", roleId=" + roleId +
+				", role='" + role + '\'' +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		User user = (User) o;
+
+		if (!login.equals(user.login)) return false;
+		if (!firstName.equals(user.firstName)) return false;
+		return lastName.equals(user.lastName);
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = login.hashCode();
+		result = 31 * result + firstName.hashCode();
+		result = 31 * result + lastName.hashCode();
+		return result;
 	}
 }

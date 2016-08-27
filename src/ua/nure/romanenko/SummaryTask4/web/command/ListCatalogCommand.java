@@ -42,9 +42,15 @@ public class ListCatalogCommand extends Command {
 		
 		LOG.debug("Command finished");
 
-		if (session.getAttribute("guest").equals("I'm a guest")) {
-			session.removeAttribute("guest");
-			return "/index.jsp";
+		LOG.trace("session.getAttribute(\"guest\") --> "+  session.getAttribute("guest") );
+		try {
+			if (session.getAttribute("guest")!= null &
+                    session.getAttribute("guest").equals("I'm a guest")) {
+                session.removeAttribute("guest");
+                return "/index.jsp";
+            }
+		} catch (NullPointerException ignored) {
+
 		}
 		return Path.PAGE_LIST_CATALOG;
 	}

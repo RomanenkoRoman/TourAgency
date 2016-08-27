@@ -42,7 +42,8 @@ public class CommandAccessFilter implements Filter {
         LOG.debug("Filter destruction finished");
     }
 
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
         LOG.debug("Filter starts");
 
         if (accessAllowed(request)) {
@@ -77,12 +78,8 @@ public class CommandAccessFilter implements Filter {
         }
 
         Role userRole = (Role) session.getAttribute("userRole");
-        if (userRole == null) {
-            return false;
-        }
+        return userRole != null && (accessMap.get(userRole).contains(commandName) || commons.contains(commandName));
 
-        return accessMap.get(userRole).contains(commandName)
-                || commons.contains(commandName);
     }
 
     public void init(FilterConfig fConfig) throws ServletException {
@@ -91,6 +88,7 @@ public class CommandAccessFilter implements Filter {
         // roles
         accessMap.put(Role.ADMIN, asList(fConfig.getInitParameter("admin")));
         accessMap.put(Role.USER, asList(fConfig.getInitParameter("user")));
+        accessMap.put(Role.MANAGER, asList(fConfig.getInitParameter("manager")));
         LOG.trace("Access map --> " + accessMap);
 
         // commons

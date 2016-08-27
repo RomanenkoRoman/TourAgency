@@ -11,7 +11,7 @@
 
 <html>
 
-<c:set var="title" value="List Orders" scope="page"/>
+<c:set var="title" value="List Users" scope="page"/>
 <%@ include file="/WEB-INF/jspf/head.jspf" %>
 
 <body>
@@ -21,7 +21,8 @@
     <table id="main-container">
 
         <%@ include file="/WEB-INF/jspf/header.jspf" %>
-        <form action="statusController" method="post">
+        <form action="controller" method="post">
+            <input type="hidden" name="command" value="banUnBan">
             <tr>
                 <td class="content">
                     <%-- CONTENT --%>
@@ -29,68 +30,50 @@
                     <c:set var="k" value="0"/>
                     <c:choose>
 
-
-                        <c:when test="${fn:length(extendedUserOrderBeanList) == 0}">No such orders</c:when>
-
+                        <c:when test="${fn:length(userList) == 0}">No found users</c:when>
                         <c:otherwise>
                             <fieldset>
-                                <legend><h3>Change status and/or give a discount to order</h3></legend>
+                                <legend><h3>All users</h3></legend>
                                 <table id="list_order_table">
                                     <thead>
                                     <tr>
                                         <td>№</td>
+                                        <td>Login</td>
+                                        <td>Password</td>
                                         <td>First name</td>
                                         <td>Last name</td>
-                                        <td>Hotel</td>
-                                        <td>Category</td>
-                                        <td>Type</td>
-                                        <td>Price</td>
-                                        <td>Status</td>
-                                        <td>Change Status</td>
-                                        <td>Discount</td>
+                                        <td>Role</td>
+                                        <td>Ban</td>
+                                        <td>Unban</td>
 
                                     </tr>
                                     </thead>
 
 
-                                    <c:forEach var="bean" items="${extendedUserOrderBeanList}">
+                                    <c:forEach var="bean" items="${userList}">
                                         <c:set var="k" value="${k+1}"/>
 
                                         <tr>
                                             <td>${k}</td>
-                                            <td>${bean.userFirstName} </td>
-                                            <td>${bean.userLastName}</td>
-                                            <td>${bean.hotelName}</td>
-                                            <td>${bean.hotelType}</td>
-                                            <td>${bean.categoryName}</td>
+                                            <td>${bean.login}</td>
+                                            <td>${bean.password}</td>
+                                            <td>${bean.firstName} </td>
+                                            <td>${bean.lastName}</td>
+                                            <td>${bean.role}</td>
 
-
-                                            <td>
-
-                                                <c:choose>
-                                                    <c:when test="${bean.discount>0}">
-                                                        ${bean.hotelPrice - (bean.hotelPrice / 100 * bean.discount)}
-
-                                                    </c:when>
-                                                    <c:when test="${bean.discount == 0}">
-                                                        ${bean.hotelPrice}
-                                                    </c:when>
-                                                </c:choose>
+                                            <c:choose>
+                                                <c:when test="${bean.ban == true}">
+                                                    <td>BANNED</td>
+                                                    <td><input type="checkbox" name="unBan" value="${bean.id}"></td>
+                                                </c:when>
+                                                <c:when test="${bean.ban == false}">
+                                                    <td><input type="checkbox" name="ban" value="${bean.id}"></td>
+                                                    <td></td>
+                                                </c:when>
+                                            </c:choose>
 
                                             </td>
 
-
-                                            <td>${bean.status}</td>
-                                            <td>
-
-
-                                                <input type="radio" name="${k}" value="paid">paid
-                                                <input type="radio" name="${k}" value="canceled">canceled
-
-
-                                            </td>
-                                            <td><input type="number" step="${step}" max="${max}" min="0" width="2"
-                                                       name="${k+100}"></td>
                                         </tr>
                                     </c:forEach>
                                     <tr>

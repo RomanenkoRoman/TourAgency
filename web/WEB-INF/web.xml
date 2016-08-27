@@ -12,12 +12,12 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <!--<resource-ref>-->
-        <!--<description>DB Connection</description>-->
-        <!--<res-ref-name>jdbc/ST4DB</res-ref-name>-->
-        <!--<res-type>javax.sql.DataSource</res-type>-->
-        <!--<res-auth>Container</res-auth>-->
-    <!--</resource-ref>-->
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/ST4DB</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
 
 
 
@@ -54,24 +54,25 @@
     </servlet-mapping>
 
 
+
     <!--============================================================-->
         <!--Encoding support filter-->
     <!--=============================================================-->
-        <!--<filter>-->
-            <!--<filter-name>EncodingFilter</filter-name>-->
-            <!--<filter-class>ua.nure.romanenko.SummaryTask4.web.filter.EncodingFilter</filter-class>-->
-            <!--<init-param>-->
-                <!--<param-name>encoding</param-name>-->
-                <!--<param-value>UTF-8</param-value>-->
-            <!--</init-param>-->
-        <!--</filter>-->
+        <filter>
+            <filter-name>EncodingFilter</filter-name>
+            <filter-class>ua.nure.romanenko.SummaryTask4.web.filter.EncodingFilter</filter-class>
+            <init-param>
+                <param-name>encoding</param-name>
+                <param-value>UTF-8</param-value>
+            </init-param>
+        </filter>
 
 
-    <!--<filter-mapping>-->
-        <!--<filter-name>EncodingFilter</filter-name>-->
-        <!--<url-pattern>/WEB-INF/jsp/*</url-pattern>-->
-        <!--<servlet-name>Controller</servlet-name>-->
-    <!--</filter-mapping>-->
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/WEB-INF/jsp/*</url-pattern>
+        <servlet-name>Controller</servlet-name>
+    </filter-mapping>
 
 
     <!--============================================================
@@ -83,31 +84,35 @@
         Delimiter - space/tab
     =============================================================-->
 
-        <!--<filter>-->
-            <!--<filter-name>CommandAccessFilter</filter-name>-->
-            <!--<filter-class>ua.nure.romanenko.SummaryTask4.web.filter.CommandAccessFilter</filter-class>-->
-            <!--<init-param>-->
-                <!--<param-name>admin</param-name>-->
-                <!--<param-value>listOrders</param-value>-->
-            <!--</init-param>-->
-            <!--<init-param>-->
-                <!--<param-name>user</param-name>-->
-                <!--<param-value>listCatalog</param-value>-->
-            <!--</init-param>-->
-            <!--<init-param>-->
-                <!--<param-name>common</param-name>-->
-                <!--<param-value>logout noCommand viewSettings</param-value>-->
-            <!--</init-param>-->
-            <!--<init-param>-->
-                <!--<param-name>out-of-control</param-name>-->
-                <!--<param-value>login</param-value>-->
-            <!--</init-param>-->
-        <!--</filter>-->
+        <filter>
+            <filter-name>CommandAccessFilter</filter-name>
+            <filter-class>ua.nure.romanenko.SummaryTask4.web.filter.CommandAccessFilter</filter-class>
+            <init-param>
+                <param-name>admin</param-name>
+                <param-value>listOrders adminListOrders doHotUnHot adminListCatalog discount deleteItems deleteSelected addCatalogItem showAddPage showAllUsers banUnBan showErrorToBannedUser</param-value>
+            </init-param>
+            <init-param>
+                <param-name>manager</param-name>
+                <param-value>listOrders adminListOrders doHotUnHot adminListCatalog discount deleteItems deleteSelected addCatalogItem showAddPage</param-value>
+            </init-param>
+            <init-param>
+                <param-name>user</param-name>
+                <param-value>listCatalog makeAnOrder private_office filterCatalog confirmOrder updateSettings</param-value>
+            </init-param>
+            <init-param>
+                <param-name>common</param-name>
+                <param-value>logout noCommand viewSettings login signUp filterCatalog listCatalog</param-value>
+            </init-param>
+            <init-param>
+                <param-name>out-of-control</param-name>
+                <param-value>login filterCatalog signUp</param-value>
+            </init-param>
+        </filter>
 
-        <!--<filter-mapping>-->
-            <!--<filter-name>CommandAccessFilter</filter-name>-->
-            <!--<servlet-name>Controller</servlet-name>-->
-        <!--</filter-mapping>-->
+        <filter-mapping>
+            <filter-name>CommandAccessFilter</filter-name>
+            <servlet-name>Controller</servlet-name>
+        </filter-mapping>
 
 
 

@@ -26,6 +26,8 @@ public class DiscountSettingsCommand extends Command {
             throws IOException, ServletException, AppException {
         LOG.trace("DiscountSettingsCommand starts");
 
+        // TODO: 26.08.2016 исправить генерацию nullPointer exception при отправке пустого поля
+
 
         LOG.trace("DiscountSettingsCommand finished");
         return Path.PAGE_DISCOUNT_SETTINGS;

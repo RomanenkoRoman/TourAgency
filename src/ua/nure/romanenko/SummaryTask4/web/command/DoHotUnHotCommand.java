@@ -26,7 +26,8 @@ public class DoHotUnHotCommand extends Command {
     private static final Logger LOG = Logger.getLogger(AdminListOrdersCommand.class);
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, AppException {
+    public String execute(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException, AppException {
         LOG.debug("DoHotCommand starts");
 
         String[] hot = request.getParameterValues("doHot");
