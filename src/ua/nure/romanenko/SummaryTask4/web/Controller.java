@@ -66,6 +66,7 @@ public class Controller extends HttpServlet {
         // go to forward
 
 
+
         switch (commandName) {
             case "confirmOrder":
                 response.sendRedirect(Path.COMMAND_PRIVATE_OFFICE);
@@ -78,5 +79,6 @@ public class Controller extends HttpServlet {
                 break;
         }
     }
+
 
 }

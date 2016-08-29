@@ -180,59 +180,59 @@ CREATE TABLE orders_catalog(
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-INSERT INTO orders_catalog VALUES(1, 7, 0,DEFAULT );
-INSERT INTO orders_catalog VALUES(1, 5, 0,DEFAULT );
-INSERT INTO orders_catalog VALUES(1, 8, 0,DEFAULT );
+-- INSERT INTO orders_catalog VALUES(1, 7, 0,DEFAULT );
+-- INSERT INTO orders_catalog VALUES(1, 5, 0,DEFAULT );
+-- INSERT INTO orders_catalog VALUES(1, 8, 0,DEFAULT );
 
+-- INSERT INTO orders_catalog VALUES(2, 3, 0,DEFAULT );
+-- INSERT INTO orders_catalog VALUES(2, 4, 0,DEFAULT );
 
-INSERT INTO orders_catalog VALUES(2, 3, 0,DEFAULT );
-INSERT INTO orders_catalog VALUES(2, 4, 0,DEFAULT );
+-- INSERT INTO orders_catalog VALUES(3, 5, 0,DEFAULT );
+-- INSERT INTO orders_catalog VALUES(3, 6, 0,DEFAULT );
 
-INSERT INTO orders_catalog VALUES(3, 5, 0,DEFAULT );
-INSERT INTO orders_catalog VALUES(3, 6, 0,DEFAULT );
-
-INSERT INTO orders_catalog VALUES(4, 6, 0,DEFAULT );
-INSERT INTO orders_catalog VALUES(4, 7, 0,DEFAULT );
-INSERT INTO orders_catalog VALUES(4, 8, 0,DEFAULT );
+-- INSERT INTO orders_catalog VALUES(4, 6, 0,DEFAULT );
+-- INSERT INTO orders_catalog VALUES(4, 7, 0,DEFAULT );
+-- INSERT INTO orders_catalog VALUES(4, 8, 0,DEFAULT );
 
 -- Insert the sum of all orders by this id
-INSERT INTO orders VALUES(1,
-(SELECT sum(price) FROM mydbtest.catalog INNER JOIN
-	(
-    SELECT catalog_id
-    FROM orders_catalog
-    WHERE order_id=1
-	) orders_catalog
-    ON catalog.id=orders_catalog.catalog_id
-), 1);
-INSERT INTO orders VALUES(2,
-(SELECT sum(price) FROM mydbtest.catalog INNER JOIN
-	(
-    SELECT catalog_id
-    FROM orders_catalog
-    WHERE order_id=2
-	) orders_catalog
-    ON catalog.id=orders_catalog.catalog_id
-), 2);
-INSERT INTO orders VALUES(3,
-(SELECT sum(price) FROM mydbtest.catalog INNER JOIN
-	(
-    SELECT catalog_id
-    FROM orders_catalog
-    WHERE order_id=3
-	) orders_catalog
-    ON catalog.id=orders_catalog.catalog_id
-), 3);
-INSERT INTO orders VALUES(4,
-(SELECT sum(price) FROM mydbtest.catalog INNER JOIN
-	(
-    SELECT catalog_id
-    FROM orders_catalog
-    WHERE order_id=4
-	) orders_catalog
-    ON catalog.id=orders_catalog.catalog_id
-), 4);
+-- INSERT INTO orders VALUES(1,
+-- (SELECT sum(price) FROM mydbtest.catalog INNER JOIN
+-- 	(
+--     SELECT catalog_id
+--     FROM orders_catalog
+--     WHERE order_id=1
+-- 	) orders_catalog
+--     ON catalog.id=orders_catalog.catalog_id
+-- ), 1);
+-- INSERT INTO orders VALUES(2,
+-- (SELECT sum(price) FROM mydbtest.catalog INNER JOIN
+-- 	(
+--     SELECT catalog_id
+--     FROM orders_catalog
+--     WHERE order_id=2
+-- 	) orders_catalog
+--     ON catalog.id=orders_catalog.catalog_id
+-- ), 2);
+-- INSERT INTO orders VALUES(3,
+-- (SELECT sum(price) FROM mydbtest.catalog INNER JOIN
+-- 	(
+--     SELECT catalog_id
+--     FROM orders_catalog
+--     WHERE order_id=3
+-- 	) orders_catalog
+--     ON catalog.id=orders_catalog.catalog_id
+-- ), 3);
+-- INSERT INTO orders VALUES(4,
+-- (SELECT sum(price) FROM mydbtest.catalog INNER JOIN
+-- 	(
+--     SELECT catalog_id
+--     FROM orders_catalog
+--     WHERE order_id=4
+-- 	) orders_catalog
+--     ON catalog.id=orders_catalog.catalog_id
+-- ), 4);
 
+INSERT into orders values(0,0,0);
 
 
 

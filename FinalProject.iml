@@ -30,5 +30,6 @@
     <orderEntry type="library" name="org.glassfish.main.extras:appserv-rt-frag:4.0" level="project" />
     <orderEntry type="library" name="javax:javaee-web-api:6.0" level="project" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="jquery-latest" level="application" />
   </component>
 </module>

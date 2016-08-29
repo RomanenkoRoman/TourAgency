@@ -1,12 +1,14 @@
 package ua.nure.romanenko.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
+import ua.nure.romanenko.SummaryTask4.Path;
 import ua.nure.romanenko.SummaryTask4.exception.AppException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * Update settings command
@@ -23,10 +25,14 @@ public class UpdateSettingsCommand extends Command {
             throws IOException, ServletException, AppException {
         LOG.trace("UpdateSettingsCommand starts");
 // TODO: 26.08.2016 доделать UpdateSettingsCommand
+//request.getLocale();
+        Locale locale = new Locale(request.getParameter("language"));
+        LOG.trace("find locale --> "+locale);
+
+//        request.setAttribute("locale",locale);
+//        response.setLocale(locale);
 
 
-
-
-        return null;
+        return Path.PAGE_SETTINGS;
     }
 }

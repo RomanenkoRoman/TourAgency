@@ -89,15 +89,15 @@
             <filter-class>ua.nure.romanenko.SummaryTask4.web.filter.CommandAccessFilter</filter-class>
             <init-param>
                 <param-name>admin</param-name>
-                <param-value>listOrders adminListOrders doHotUnHot adminListCatalog discount deleteItems deleteSelected addCatalogItem showAddPage showAllUsers banUnBan showErrorToBannedUser</param-value>
+                <param-value>listOrders adminListOrders doHotUnHot adminListCatalog discount deleteItems deleteSelected addCatalogItem showAddPage showAllUsers banUnBan showErrorToBannedUser viewSettings updateSettings</param-value>
             </init-param>
             <init-param>
                 <param-name>manager</param-name>
-                <param-value>listOrders adminListOrders doHotUnHot adminListCatalog discount deleteItems deleteSelected addCatalogItem showAddPage</param-value>
+                <param-value>listOrders adminListOrders doHotUnHot adminListCatalog discount deleteItems deleteSelected addCatalogItem showAddPage viewSettings updateSettings</param-value>
             </init-param>
             <init-param>
                 <param-name>user</param-name>
-                <param-value>listCatalog makeAnOrder private_office filterCatalog confirmOrder updateSettings</param-value>
+                <param-value>listCatalog makeAnOrder private_office filterCatalog confirmOrder updateSettings viewSettings</param-value>
             </init-param>
             <init-param>
                 <param-name>common</param-name>

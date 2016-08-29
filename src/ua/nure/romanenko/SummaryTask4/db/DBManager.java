@@ -296,7 +296,6 @@ public final class DBManager {
             while (rs.next()) {
                 list.add(extractExtendedUserOrderBean(rs));
             }
-            con.commit();
         } catch (SQLException e) {
             rollback(con);
             LOG.error(Messages.ERR_CANNOT_OBTAIN_USER_ORDER_BEANS, e);

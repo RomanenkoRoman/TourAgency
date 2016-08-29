@@ -45,11 +45,13 @@ public class FilterCatalogCommand extends Command {
         LOG.trace("find in attribute address --> "+session.getAttribute("guest"));
 
 
-        if (session.getAttribute("guest").equals("I'm a guest")) {
-            LOG.trace("find in attribute guest" + request.getAttribute("guest"));
-            session.removeAttribute("guest");
-            return "/index.jsp";
-        }
+        try {
+            if (session.getAttribute("guest").equals("I'm a guest")) {
+                LOG.trace("find in attribute guest" + request.getAttribute("guest"));
+                session.removeAttribute("guest");
+                return "/index.jsp";
+            }
+        } catch (NullPointerException ignored) {}
         return Path.COMMAND_LIST_CATALOG;
     }
 

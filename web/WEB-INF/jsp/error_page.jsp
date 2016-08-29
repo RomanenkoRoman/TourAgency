@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.io.PrintWriter" %><%--
   Created by IntelliJ IDEA.
   User: Роман
   Date: 04.08.2016
@@ -6,11 +6,28 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page isErrorPage="true" %>
-<%@ page import="java.io.PrintWriter" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
 <%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
 
-<html>
+
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<c:set var="loc" value="${language}"/>
+<c:choose>
+    <c:when test="${loc == 'ru_RU'}">
+        <fmt:setLocale value="ru" />
+    </c:when>
+    <c:when test="${loc == 'ru'}">
+        <fmt:setLocale value="ru" />
+    </c:when>
+    <c:when test="${loc == 'en'}">
+        <fmt:setLocale value="en" />
+    </c:when>
+
+</c:choose>
+<fmt:setBundle basename="ua.nure.romanenko.SummaryTask4.text" />
+<html lang="${language}">
 
 <c:set var="title" value="Error" scope="page" />
 <%@ include file="/WEB-INF/jspf/head.jspf" %>
@@ -28,7 +45,7 @@
             <%-- CONTENT --%>
 
             <h2 class="error">
-                The following error occurred
+                <fmt:message key="errorPage.folowingErrorOccured"/>
             </h2>
 
             <%-- this way we obtain an information about an exception (if it has been occurred) --%>

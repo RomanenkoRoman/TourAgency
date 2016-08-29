@@ -5,13 +5,28 @@
   Time: 17:49
   To change this template use File | Settings | File Templates.
 --%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
 <%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
 
 
-<html>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<c:set var="loc" value="${language}"/>
+<c:choose>
+    <c:when test="${loc == 'ru_RU'}">
+        <fmt:setLocale value="ru" />
+    </c:when>
+    <c:when test="${loc == 'ru'}">
+        <fmt:setLocale value="ru" />
+    </c:when>
+    <c:when test="${loc == 'en'}">
+        <fmt:setLocale value="en" />
+    </c:when>
+
+</c:choose>
+<fmt:setBundle basename="ua.nure.romanenko.SummaryTask4.text" />
+<html lang="${language}">
 <c:set var="title" value="Private office" scope="page"/>
 <%@ include file="/WEB-INF/jspf/head.jspf" %>
 
@@ -37,33 +52,33 @@
     <tr>
         <td class="content">
             <h3 class="error">
-                Hello,${user.firstName} ${user.lastName}. This is your private office;<br>
-                No such orders
+                <fmt:message key="privateOffice.hello"/>${user.firstName} ${user.lastName}<fmt:message key="privateOffice.thisIsYour"/><br>
+                <fmt:message key="privateOffice.noSuchOrders"/>
             </h3>
         </td>
     </tr>
 
     </c:when>
     <c:otherwise>
-        <table id="your_order_list">
+        <table class="table table-striped" id="your_order_list">
             <thead>
             <tr>
-                <td>№</td>
-                <td>Name</td>
-                <td>Price</td>
-                <td>Category</td>
-                <td>Hotel Type</td>
-                <td>People</td>
-                <td>Status</td>
-                <td>Discount</td>
+                <td><b>№</b></td>
+                <td><b><fmt:message key="addCatalogItem.label.name"/></b></td>
+                <td><b><fmt:message key="addCatalogItem.label.price"/></b></td>
+                <td><b><fmt:message key="deleteItems.table.thead.category"/></b></td>
+                <td><b><fmt:message key="addCatalogItem.label.hotelType"/></b></td>
+                <td><b><fmt:message key="deleteItems.table.thead.people"/></b></td>
+                <td><b><fmt:message key="listOrders.status"/></b></td>
+                <td><b><fmt:message key="listOrders.discount"/></b></td>
             </tr>
             </thead>
 
             <c:set var="bill" value="0"/>
             <c:set var="k" value="0"/>
 
-            <h3>Hello,${user.firstName} ${user.lastName}. This is your private office;<br>
-                Your orders is :
+            <h3><fmt:message key="privateOffice.hello"/>${user.firstName} ${user.lastName}<fmt:message key="privateOffice.thisIsYour"/><br>
+                <fmt:message key="privateOffice.yourOrderIs"/>
             </h3>
             <br>
             <br>
