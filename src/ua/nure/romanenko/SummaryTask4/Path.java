@@ -38,5 +38,6 @@ public class Path {
     public static final String COMMAND_SHOW_ALL_USERS = "/controller?command=showAllUsers";
     public static final String COMMAND_SHOW_ERROR_TO_BANNED_USER = "/controller?command=showErrorToBannedUser";
     public static final String COMMAND_SHOW_ADD_PAGE = "/controller?command=showAddPage";
+    public static final String COMMAND_SHOW_SETTINGS_PAGE = "/controller?command=ShowSettingsPage";
 
 }

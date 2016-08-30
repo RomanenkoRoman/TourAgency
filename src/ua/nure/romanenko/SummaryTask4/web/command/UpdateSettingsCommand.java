@@ -2,11 +2,14 @@ package ua.nure.romanenko.SummaryTask4.web.command;
 
 import org.apache.log4j.Logger;
 import ua.nure.romanenko.SummaryTask4.Path;
+import ua.nure.romanenko.SummaryTask4.db.dao.UserDAO;
+import ua.nure.romanenko.SummaryTask4.db.entity.User;
 import ua.nure.romanenko.SummaryTask4.exception.AppException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Locale;
 
@@ -24,14 +27,21 @@ public class UpdateSettingsCommand extends Command {
     public String execute(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException, AppException {
         LOG.trace("UpdateSettingsCommand starts");
-// TODO: 26.08.2016 доделать UpdateSettingsCommand
-//request.getLocale();
+
         Locale locale = new Locale(request.getParameter("language"));
         LOG.trace("find locale --> "+locale);
 
-//        request.setAttribute("locale",locale);
-//        response.setLocale(locale);
+        try {
+            HttpSession session = request.getSession();
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            User user = (User) session.getAttribute("user");
 
+            UserDAO.updateUser(user, firstName, lastName);
+        }catch (Exception e){
+            LOG.error("UpdateSettingsCommand failed",e);
+
+        }
 
         return Path.PAGE_SETTINGS;
     }

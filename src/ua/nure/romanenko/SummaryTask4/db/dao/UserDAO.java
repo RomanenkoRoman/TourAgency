@@ -16,7 +16,7 @@ import java.util.List;
  * Created by Роман on 24.08.2016.
  */
 public class UserDAO {
-    private static final String SQL_UPDATE_USER = "UPDATE users SET password=?, first_name=?, last_name=?"
+    private static final String SQL_UPDATE_USER = "UPDATE users SET  first_name=?, last_name=?"
             + "	WHERE id=?";
     private static final String SQL_ADD_USER_TO_DB = "INSERT INTO users \n" +
             "VALUES(DEFAULT, ?, ?, ?, ?, 2,DEFAULT);";
@@ -203,6 +203,32 @@ public class UserDAO {
         }
         return false;
 
+    }
+
+    public static boolean updateUser(User user, String firstName, String lastName)
+            throws DBException {
+        LOGGER.trace("update method starts");
+        DBManager manager = DBManager.getInstance();
+        Connection connection = null;
+        PreparedStatement ps = null;
+        try {
+            connection = manager.getConnection();
+            connection.setAutoCommit(false);
+            ps = connection.prepareStatement(SQL_UPDATE_USER);
+            ps.setString(1, firstName);
+            ps.setString(2, lastName);
+            ps.setInt(3, user.getId());
+            ps.executeUpdate();
+
+            connection.commit();
+
+        } catch (DBException | SQLException e) {
+            manager.close(ps);
+            manager.close(connection);
+            LOGGER.error("cannot update user",e);
+        }
+        LOGGER.trace("update method finished");
+        return true;
     }
 
 }

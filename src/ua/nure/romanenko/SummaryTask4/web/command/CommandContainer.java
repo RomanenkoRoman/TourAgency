@@ -21,6 +21,7 @@ public class CommandContainer {
         commands.put("viewSettings", new ViewSettingsCommand());
         commands.put("noCommand", new NoCommand());
         commands.put("signUp", new SignUpCommand());
+        commands.put("ShowSettingsPage", new ShowSettingsPageCommand());
 
 
         // client commands

@@ -62,19 +62,7 @@
 
                     <fmt:message key="settings.label.reset" var="res"/>
                     <input class="btn btn-info" type="reset" value="${res}">
-                <%--</form>--%>
-                    <%--<form method="post">--%>
-                        <%--<label for="username"><fmt:message key="settings.label.username" />:</label>--%>
-                        <%--<input type="text" id="username" name="username">--%>
-                        <%--<br>--%>
-                        <%--<label for="password"><fmt:message key="settings.label.password" />:</label>--%>
-                        <%--<input type="password" id="password" name="password">--%>
-                        <%--<br>--%>
-                        <%--<fmt:message key="login.button.submit" var="buttonValue" />--%>
-                        <%--<input type="submit" name="submit" value="${buttonValue}">--%>
-                    <%--</form>--%>
 
-                <%-- CONTENT --%>
             </td>
         </tr>
 

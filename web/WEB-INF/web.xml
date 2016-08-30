@@ -105,7 +105,7 @@
             </init-param>
             <init-param>
                 <param-name>out-of-control</param-name>
-                <param-value>login filterCatalog signUp</param-value>
+                <param-value>login filterCatalog signUp ShowSettingsPage</param-value>
             </init-param>
         </filter>
 

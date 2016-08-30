@@ -68,6 +68,9 @@ public class Controller extends HttpServlet {
 
 
         switch (commandName) {
+            case "updateSettings":
+                response.sendRedirect(Path.COMMAND_SHOW_SETTINGS_PAGE);
+                break;
             case "confirmOrder":
                 response.sendRedirect(Path.COMMAND_PRIVATE_OFFICE);
                 break;
